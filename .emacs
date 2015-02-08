@@ -1,6 +1,9 @@
-(setq package-list '(irony
+(setq package-list '(
+		     irony
 		     flycheck
 		     company-irony
+		     solarized-theme
+		     pbcopy
 		     ))
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -30,7 +33,7 @@
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
 (eval-after-load 'flycheck
-    '(add-to-list 'flycheck-checkers 'irony))
+  '(add-to-list 'flycheck-checkers 'irony))
 
 (eval-after-load 'company
   '(add-to-list 'company-backends 'company-irony))
@@ -42,5 +45,41 @@
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 (setq company-backends (delete 'company-semantic company-backends))
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
+
+(setq x-select-enable-clipboard t)
+
+(if window-system
+    (load-theme 'solarized-light t)
+    (load-theme 'wombat t))
+
+(setq frame-title-format '(buffer-file-name "%f" ("%b")))
+(set-face-attribute 'default nil
+		    :family "Menlo"
+		    :height 120
+		    :weight 'normal
+		    :width 'normal)
+
+
+(global-linum-mode 1)
+(set-face-attribute 'linum nil :height 100)
+
+(require 'pbcopy)
+(turn-on-pbcopy)
+
+(setq inhibit-splash-screen t
+      initial-scratch-message nil
+      initial-major-mode 'org-mode)
+
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+
+(setq tab-width 4
+      indent-tabs-mode nil)
+
+(setq make-backup-files nil)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
