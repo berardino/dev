@@ -1,9 +1,14 @@
 (setq package-list '(
+		     projectile
 		     irony
 		     flycheck
 		     company-irony
 		     solarized-theme
 		     pbcopy
+		     smart-mode-line
+		     cmake-mode
+		     cmake-project
+		     helm-projectile
 		     ))
 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
@@ -18,7 +23,6 @@
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
-
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -62,6 +66,8 @@
 
 (global-linum-mode 1)
 (set-face-attribute 'linum nil :height 100)
+(setq linum-format "%d ")
+(setq find-file-visit-truename t)
 
 (require 'pbcopy)
 (turn-on-pbcopy)
@@ -83,3 +89,34 @@
 
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+
+
+(require 'smart-mode-line)
+(setq sml/theme 'respectful)
+(setq sml/no-confirm-load-theme t)
+(add-hook 'after-init-hook 'sml/setup)
+
+(require 'cmake-mode)
+(setq auto-mode-alist
+	  (append
+	   '(("CMakeLists\\.txt\\'" . cmake-mode))
+	   '(("\\.cmake\\'" . cmake-mode))
+	   auto-mode-alist))
+
+(require 'cmake-project)
+
+(defun maybe-cmake-project-hook ()
+  (if (file-exists-p "CMakeLists.txt") (cmake-project-mode)))
+(add-hook 'c-mode-hook 'maybe-cmake-project-hook)
+(add-hook 'c++-mode-hook 'maybe-cmake-project-hook)
+
+(projectile-global-mode)
+
+(require 'helm-projectile)
+(helm-projectile-on)
+
+(require 'helm-config)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+(helm-mode 1)
