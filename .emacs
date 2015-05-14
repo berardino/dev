@@ -1,23 +1,10 @@
-;; if you're new to the MELPA package manager, just include
-;; this entire snippet in your `~/.emacs` file and follow
-;; the instructions in the comments.
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
-
-;; Restart emacs and do `M-x package-install [RETURN] ensime [RETURN]`
-;; To keep up-to-date, do `M-x list-packages [RETURN] U [RETURN] x [RETURN]`
-
-;; If necessary, make sure "sbt" and "scala" are in the PATH environment
-;; (setenv "PATH" (concat "/path/to/sbt/bin:" (getenv "PATH")))
-;; (setenv "PATH" (concat "/path/to/scala/bin:" (getenv "PATH")))
-;;
-;; On Macs, it might be a safer bet to use exec-path instead of PATH, for instance:
-;; (setq exec-path (append exec-path '("/usr/local/bin")))
 
 (load-theme 'monokai t)
 (require 'ensime)
@@ -59,10 +46,43 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
-(set-frame-font "Menlo:pixelsize=12")
+(set-frame-font "Menlo:pixelsize=13")
 
-;; If you use Emacs Daemon mode
 (add-to-list 'default-frame-alist
-               (cons 'font "Menlo:pixelsize=12"))
+             (cons 'font "Menlo:pixelsize=12"))
 
+(setq ring-bell-function 'ignore)
+(setq make-backup-files nil)
 
+(setq inhibit-splash-screen t)
+(setq initial-scratch-message nil)
+
+(require 'whitespace)
+(setq whitespace-style '(tabs tab-mark trailing))
+(global-whitespace-mode 1)
+
+(setq sml/no-confirm-load-theme t)
+(set-face-attribute 'mode-line nil
+                    :foreground "Black"
+                    :background "DarkOrange"
+                    :box nil)
+(setq sml/theme 'powerline)
+(sml/setup)
+
+(require 'drag-stuff)
+(drag-stuff-mode t)
+(drag-stuff-global-mode t)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("26614652a4b3515b4bbbb9828d71e206cc249b67c9142c06239ed3418eff95e2" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
