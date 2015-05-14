@@ -86,3 +86,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(elpy-enable)
+
+(require 'iedit)
+(global-set-key (kbd "C-;") 'iedit-mode)
+
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
+(require 'magit)
+
