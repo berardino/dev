@@ -34,8 +34,11 @@
 (setq linum-format "%d ")
 (setq find-file-visit-truename t)
 
-(tool-bar-mode -1)
 (menu-bar-mode -1)
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+            (scroll-bar-mode -1)))
 
 
 (setq tab-width 4
