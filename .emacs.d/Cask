@@ -1,5 +1,6 @@
 (source gnu)
 (source melpa)
+(source marmalade)
 
 (depends-on "bind-key")
 (depends-on "cask")
@@ -34,3 +35,7 @@
 (depends-on "powerline")
 (depends-on "smart-mode-line-powerline-theme")
 (depends-on "elpy")
+(depends-on "irony")
+(depends-on "flycheck-irony")
+(depends-on "company-irony")
+(depends-on "sr-speedbar")

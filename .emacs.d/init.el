@@ -1,14 +1,7 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
+(require 'sr-speedbar)
 (load-theme 'monokai t)
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
@@ -41,11 +34,11 @@
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)
-            (scroll-bar-mode -1)))
+      (scroll-bar-mode -1)))
 
 
-(setq tab-width 4
-      indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -62,6 +55,8 @@
 
 (setq inhibit-splash-screen t)
 (setq initial-scratch-message nil)
+(setq column-number-mode t)
+(setq line-number-mode t)
 
 (require 'whitespace)
 (setq whitespace-style '(tabs tab-mark trailing))
@@ -101,4 +96,35 @@
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
 (require 'magit)
+
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'objc-mode-hook 'irony-mode)
+
+;; replace the `completion-at-point' and `complete-symbol' bindings in
+;; irony-mode's buffers by irony-mode's function
+(defun my-irony-mode-hook ()
+  (define-key irony-mode-map [remap completion-at-point]
+    'irony-completion-at-point-async)
+  (define-key irony-mode-map [remap complete-symbol]
+    'irony-completion-at-point-async))
+(add-hook 'irony-mode-hook 'my-irony-mode-hook)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+;; (optional) adds CC special commands to `company-begin-commands' in order to
+;; trigger completion at interesting places, such as after scope operator
+;;     std::|
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
 
