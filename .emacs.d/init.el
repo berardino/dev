@@ -1,6 +1,11 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
 (require 'sr-speedbar)
 (load-theme 'monokai t)
 (require 'ensime)
