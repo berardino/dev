@@ -39,3 +39,5 @@
 (depends-on "flycheck-irony")
 (depends-on "company-irony")
 (depends-on "sr-speedbar")
+(depends-on "groovy-mode")
+(depends-on "grails-mode")
