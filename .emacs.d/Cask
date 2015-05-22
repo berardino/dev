@@ -41,3 +41,4 @@
 (depends-on "sr-speedbar")
 (depends-on "groovy-mode")
 (depends-on "grails-mode")
+(depends-on "hackernews")
