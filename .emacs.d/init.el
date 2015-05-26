@@ -135,3 +135,6 @@
 
 (setq hackernews-top-story-limit 40)
 
+
+;; web
+(require 'web-mode)
