@@ -1,10 +1,13 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
-
 (require 'iedit)
 (global-set-key (kbd "C-;") 'iedit-mode)
 
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
 
 (require 'sr-speedbar)
 (load-theme 'monokai t)
@@ -17,6 +20,7 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+(setq projectile-require-project-root nil)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -130,4 +134,8 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
+(setq hackernews-top-story-limit 40)
 
+
+;; web
+(require 'web-mode)
