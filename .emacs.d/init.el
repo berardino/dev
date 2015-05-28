@@ -1,6 +1,11 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+
+(require 'iedit)
+(global-set-key (kbd "C-;") 'iedit-mode)
+
+
 (require 'sr-speedbar)
 (load-theme 'monokai t)
 (require 'ensime)
@@ -90,8 +95,6 @@
 
 (elpy-enable)
 
-(require 'iedit)
-(global-set-key (kbd "C-;") 'iedit-mode)
 
 (setq magit-auto-revert-mode nil)
 (setq magit-last-seen-setup-instructions "1.4.0")
