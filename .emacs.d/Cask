@@ -43,4 +43,6 @@
 (depends-on "grails-mode")
 (depends-on "hackernews")
 (depends-on "web-mode")
-(depends-on "zenburn-theme")
+(depends-on "atom-dark")
+(depends-on "neotree")
+(depends-on "impatient-mode")

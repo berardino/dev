@@ -11,7 +11,7 @@
 
 (require 'sr-speedbar)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'zenburn t)
+(load-theme 'atom-dark t)
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
@@ -21,7 +21,6 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
-(setq projectile-require-project-root nil)
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
@@ -142,3 +141,25 @@
 
 ;; web
 (require 'web-mode)
+
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme 'ascii)
+(custom-set-faces
+ '(neo-banner-face ((t . (:inherit shadow))) t)
+ '(neo-header-face ((t . (:inherit shadow))) t)
+ '(neo-root-dir-face ((t . (:inherit link-visited :underline nil))) t)
+ '(neo-dir-link-face ((t . (:inherit dired-directory))) t)
+ '(neo-file-link-face ((t . (:inherit default))) t)
+ '(neo-button-face ((t . (:inherit dired-directory))) t)
+ '(neo-expand-btn-face ((t . (:inherit button))) t))
+
+;;;
+(require 'impatient-mode)
+
+;;; xml
+(require 'nxml-mode)
+(setq nxml-bind-meta-tab-to-complete-flag t)
+(setq nxml-slash-auto-complete-flag t)
+
