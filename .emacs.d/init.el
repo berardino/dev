@@ -1,5 +1,55 @@
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
+(require 'package)
+
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+
+(package-initialize)
+
+
+(defun require-package (package &optional min-version no-refresh)
+  "Ask elpa to install given PACKAGE."
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (package-install package)
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
+
+(require-package 'bind-key)
+(require-package 'dash)
+(require-package 'drag-stuff)
+(require-package 'exec-path-from-shell)
+(require-package 'expand-region)
+(require-package 'f)
+(require-package 'flycheck)
+(require-package 'htmlize)
+(require-package 'idle-highlight-mode)
+(require-package 'magit)
+(require-package 'multiple-cursors)
+(require-package 'popwin)
+(require-package 's)
+(require-package 'smartparens)
+(require-package 'web-mode)
+(require-package 'yasnippet)
+(require-package 'ensime)
+(require-package 'projectile)
+(require-package 'helm-projectile)
+(require-package 'whitespace)
+(require-package 'iedit)
+(require-package 'smart-mode-line)
+(require-package 'powerline)
+(require-package 'smart-mode-line-powerline-theme)
+(require-package 'elpy)
+(require-package 'irony)
+(require-package 'flycheck-irony)
+(require-package 'company-irony)
+(require-package 'sr-speedbar)
+(require-package 'groovy-mode)
+(require-package 'grails-mode)
+(require-package 'neotree)
+(require-package 'zenburn-theme)
 
 (require 'iedit)
 (global-set-key (kbd "C-;") 'iedit-mode)
@@ -11,7 +61,7 @@
 
 (require 'sr-speedbar)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'atom-dark t)
+
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
@@ -156,10 +206,9 @@
  '(neo-expand-btn-face ((t . (:inherit button))) t))
 
 ;;;
-(require 'impatient-mode)
-
 ;;; xml
 (require 'nxml-mode)
 (setq nxml-bind-meta-tab-to-complete-flag t)
 (setq nxml-slash-auto-complete-flag t)
 
+(load-theme 'zenburn t)
