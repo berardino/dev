@@ -50,6 +50,9 @@
 (require-package 'grails-mode)
 (require-package 'neotree)
 (require-package 'zenburn-theme)
+(require-package 'emacs-eclim)
+(require-package 'puppet-mode)
+
 
 (require 'iedit)
 (global-set-key (kbd "C-;") 'iedit-mode)
@@ -212,3 +215,26 @@
 (setq nxml-slash-auto-complete-flag t)
 
 (load-theme 'zenburn t)
+
+(require 'eclim)
+(global-eclim-mode)
+(require 'eclimd)
+
+(custom-set-variables
+  '(eclim-eclipse-dirs '("~/dev/sw/eclipse_eclim"))
+  '(eclim-executable "~/dev/sw/eclipse_eclim/eclim"))
+
+(setq help-at-pt-display-when-idle t)
+(setq help-at-pt-timer-delay 0.1)
+(help-at-pt-set-timer)
+
+(require 'auto-complete-config)
+(ac-config-default)
+
+(require 'ac-emacs-eclim-source)
+(ac-emacs-eclim-config)
+
+(require 'company)
+(require 'company-emacs-eclim)
+(company-emacs-eclim-setup)
+(global-company-mode t)
