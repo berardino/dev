@@ -14,10 +14,10 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
-(set-frame-font "Menlo:pixelsize=16")
+(set-frame-font "Monaco:pixelsize=14")
 
 (add-to-list 'default-frame-alist
-             (cons 'font "Menlo:pixelsize=16"))
+             (cons 'font "Monaco:pixelsize=14"))
 
 ;; Set path to dependencies
 (setq settings-dir
