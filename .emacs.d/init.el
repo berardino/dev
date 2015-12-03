@@ -47,6 +47,8 @@
      moe-theme
      smart-mode-line
      smart-mode-line-powerline-theme
+     helm
+     helm-ls-git
      )))
 
 (condition-case nil
@@ -107,3 +109,9 @@
 (setq powerline-default-separator-dir '(right . left))
 (setq sml/theme 'powerline)
 (sml/setup)
+
+
+;; Helm
+(require 'helm)
+(require 'helm-config)
+(require 'helm-ls-git)

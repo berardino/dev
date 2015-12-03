@@ -16,5 +16,8 @@
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+;; Helm
+(global-set-key (kbd "M-p") 'helm-M-x)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
 
 (provide 'key-bindings)
