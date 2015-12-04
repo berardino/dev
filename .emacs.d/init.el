@@ -8,7 +8,7 @@
 ;; No splash screen
 (setq inhibit-startup-message t)
 (switch-to-buffer "**")
-(setq visible-bell f)
+(setq visible-bell nil)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
