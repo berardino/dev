@@ -50,6 +50,7 @@
      smart-mode-line-powerline-theme
      helm
      helm-ls-git
+     helm-ag
      editorconfig
      magit
      )))
@@ -118,6 +119,7 @@
 (require 'helm)
 (require 'helm-config)
 (require 'helm-ls-git)
+
 
 ;; EditorConfig
 (require 'editorconfig)
