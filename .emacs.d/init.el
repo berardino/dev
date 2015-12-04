@@ -8,6 +8,7 @@
 ;; No splash screen
 (setq inhibit-startup-message t)
 (switch-to-buffer "**")
+(setq visible-bell f)
 
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
@@ -49,6 +50,8 @@
      smart-mode-line-powerline-theme
      helm
      helm-ls-git
+     editorconfig
+     magit
      )))
 
 (condition-case nil
@@ -115,3 +118,7 @@
 (require 'helm)
 (require 'helm-config)
 (require 'helm-ls-git)
+
+;; EditorConfig
+(require 'editorconfig)
+(editorconfig-mode 1)
