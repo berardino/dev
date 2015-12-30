@@ -27,8 +27,7 @@
 
 (require 'package)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 
@@ -53,6 +52,7 @@
      helm-ag
      editorconfig
      magit
+     sbt-mode
      )))
 
 (condition-case nil
@@ -66,12 +66,6 @@
 (load custom-file)
 
 (require 'better-defaults)
-
-
-;; No backup files
-(setq make-backup-files nil)
-(setq backup-inhibited t)
-(setq auto-save-default nil)
 
 ;; Visual regexp
 (require 'visual-regexp)
@@ -124,3 +118,8 @@
 ;; EditorConfig
 (require 'editorconfig)
 (editorconfig-mode 1)
+
+;; No backup files
+(setq make-backup-files nil)
+(setq backup-inhibited t)
+(setq auto-save-default nil)
