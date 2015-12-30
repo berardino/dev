@@ -14,3 +14,6 @@ tig
 gnupg
 wireshark
 the_silver_searcher
+sbt
+scala2.11
+gradle
