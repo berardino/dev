@@ -18,3 +18,5 @@ sbt
 scala2.11
 gradle
 ffmpeg
+imagemagick
+ghostscript
