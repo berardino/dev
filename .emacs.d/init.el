@@ -53,6 +53,8 @@
      editorconfig
      magit
      sbt-mode
+     web-mode
+     groovy-mode
      )))
 
 (condition-case nil
