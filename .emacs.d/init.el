@@ -55,6 +55,7 @@
      sbt-mode
      web-mode
      groovy-mode
+     glsl-mode
      )))
 
 (condition-case nil
