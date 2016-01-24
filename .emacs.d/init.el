@@ -55,6 +55,7 @@
      sbt-mode
      web-mode
      groovy-mode
+     dockerfile-mode
      )))
 
 (condition-case nil
