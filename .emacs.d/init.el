@@ -8,8 +8,6 @@
 ;; No splash screen
 (setq inhibit-startup-message t)
 (switch-to-buffer "**")
-(setq visible-bell nil)
-
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -56,6 +54,7 @@
      web-mode
      groovy-mode
      dockerfile-mode
+     glsl-mode
      )))
 
 (condition-case nil
@@ -126,3 +125,4 @@
 (setq make-backup-files nil)
 (setq backup-inhibited t)
 (setq auto-save-default nil)
+(setq visible-bell nil)

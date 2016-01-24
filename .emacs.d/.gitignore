@@ -2,3 +2,4 @@ elpa
 places
 smex-items
 backups
+*.last
