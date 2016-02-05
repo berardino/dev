@@ -55,6 +55,7 @@
      groovy-mode
      dockerfile-mode
      glsl-mode
+     evil
      )))
 
 (condition-case nil
@@ -126,3 +127,8 @@
 (setq backup-inhibited t)
 (setq auto-save-default nil)
 (setq visible-bell nil)
+
+;; Evil
+
+(require 'evil)
+(evil-mode 1)
