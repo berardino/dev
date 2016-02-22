@@ -1,11 +1,12 @@
 bash
+bash_completion
 calc
 docker
 docker-machine
 emacs
 ffmpeg
 ghostscript
-git
+git +bash_completion
 gnupg
 gradle
 groovy
